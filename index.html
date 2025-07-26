@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coinbase - The future of money is here</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            /* background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); */
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            padding: 16px 24px;
+            /* box-shadow: 0 1px 3px rgba(0,0,0,0.1); */
+            position: relative;
+            z-index: 100;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0052ff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #1a202c;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #0052ff;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .btn-secondary {
+            padding: 8px 16px;
+            background: transparent;
+            border: none;
+            color: #1a202c;
+            font-weight: 500;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .btn-secondary:hover {
+            color: #0052ff;
+        }
+
+        .btn-primary {
+            padding: 10px 20px;
+            background: #0052ff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: #0040cc;
+        }
+
+        /* Main Content */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 24px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .mockups-section {
+            order: 1;
+        }
+
+        .content-section {
+            order: 2;
+        }
+
+        .content-section {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .hero-title {
+            font-size: 64px;
+            font-weight: 600;
+            line-height: 1.1;
+            color: #1a202c;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: #4a5568;
+            line-height: 1.5;
+        }
+
+        .signup-form {
+            display: flex;
+            gap: 12px;
+            align-items: stretch;
+        }
+
+        .email-input {
+            flex: 1;
+            padding: 14px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.2s;
+        }
+
+        .email-input:focus {
+            outline: none;
+            border-color: #0052ff;
+        }
+
+        .signup-btn {
+            padding: 14px 24px;
+            background: #0052ff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .signup-btn:hover {
+            background: #0040cc;
+        }
+
+        /* Mobile Mockups */
+        .mockups-section {
+            display: flex;
+            gap: 0px;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .phone-mockup {
+            background: #1a202c;
+            border-radius: 25px;
+            padding: 8px;
+            /* box-shadow: 0 20px 40px rgba(0,0,0,0.15); */
+            position: relative;
+        }
+
+        .phone-screen {
+            background: white;
+            border-radius: 20px;
+            width: 280px;
+            height: 580px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .phone-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .signal-bars {
+            display: flex;
+            gap: 2px;
+            align-items: flex-end;
+        }
+
+        .bar {
+            width: 3px;
+            background: #1a202c;
+            border-radius: 1px;
+        }
+
+        .bar:nth-child(1) { height: 4px; }
+        .bar:nth-child(2) { height: 6px; }
+        .bar:nth-child(3) { height: 8px; }
+        .bar:nth-child(4) { height: 10px; }
+
+        .phone-content {
+            padding: 0 20px;
+        }
+
+        .portfolio-value {
+            font-size: 32px;
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 4px;
+        }
+
+        .portfolio-change {
+            color: #10b981;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .crypto-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .crypto-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+        }
+
+        .crypto-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .crypto-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .btc { background: #f7931a; }
+        .eth { background: #627eea; }
+
+        .crypto-details h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 2px;
+        }
+
+        .crypto-details p {
+            font-size: 12px;
+            color: #718096;
+        }
+
+        .crypto-price {
+            text-align: right;
+        }
+
+        .crypto-price .price {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 2px;
+        }
+
+        .crypto-price .change {
+            font-size: 12px;
+            color: #10b981;
+        }
+
+        .chart {
+            width: 60px;
+            height: 30px;
+            position: relative;
+        }
+
+        .chart-line {
+            stroke: #10b981;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .action-btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .buy-btn {
+            background: #0052ff;
+            color: white;
+            border: none;
+        }
+
+        .transfer-btn {
+            background: #f7fafc;
+            color: #1a202c;
+            border: 1px solid #e2e8f0;
+        }
+
+        .bottom-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            display: flex;
+            justify-content: space-around;
+            padding: 16px 0;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .nav-icon {
+            width: 24px;
+            height: 24px;
+            background: #cbd5e0;
+            border-radius: 4px;
+        }
+
+        .nav-icon.active {
+            background: #0052ff;
+        }
+
+        /* Second Phone - Ethereum Detail */
+        .eth-phone .phone-content {
+            padding-top: 40px;
+        }
+
+        .back-arrow {
+            position: absolute;
+            top: 50px;
+            left: 20px;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+        }
+
+        .eth-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .eth-icon-large {
+            width: 48px;
+            height: 48px;
+            background: #627eea;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .eth-details h2 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 4px;
+        }
+
+        .eth-details .price-small {
+            font-size: 14px;
+            color: #718096;
+        }
+
+        .price-chart {
+            width: 100%;
+            height: 150px;
+            margin: 24px 0;
+            position: relative;
+        }
+
+        .balance-section {
+            margin-top: 24px;
+        }
+
+        .balance-label {
+            font-size: 14px;
+            color: #718096;
+            margin-bottom: 8px;
+        }
+
+        .balance-amount {
+            font-size: 28px;
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 4px;
+        }
+
+        .balance-usd {
+            font-size: 14px;
+            color: #718096;
+        }
+
+        .returns-section {
+            margin-top: 20px;
+        }
+
+        .returns-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .returns-label {
+            font-size: 14px;
+            color: #718096;
+        }
+
+        .returns-value {
+            font-size: 14px;
+            color: #10b981;
+            font-weight: 500;
+        }
+
+        /* Cookie Banner */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+            padding: 20px 24px;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .cookie-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .cookie-text {
+            font-size: 14px;
+            color: #4a5568;
+            line-height: 1.4;
+        }
+
+        .cookie-text a {
+            color: #0052ff;
+            text-decoration: none;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .cookie-btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .cookie-close {
+            background: transparent;
+            border: 1px solid #e2e8f0;
+            color: #4a5568;
+        }
+
+        .cookie-accept {
+            background: #0052ff;
+            border: none;
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .main-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .hero-title {
+                font-size: 48px;
+            }
+
+            .mockups-section {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .phone-mockup {
+                transform: scale(0.9);
+            }
+
+            .cookie-content {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">coinbase</div>
+            <ul class="nav-links">
+                <li><a href="#">Cryptocurrencies</a></li>
+                <li><a href="#">Individuals</a></li>
+                <li><a href="#">Businesses</a></li>
+                <li><a href="#">Institutions</a></li>
+                <li><a href="#">Developers</a></li>
+                <li><a href="#">Company</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <button class="btn-secondary">Sign In</button>
+                <button class="btn-primary">Sign up</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        <section class="mockups-section">
+            <!-- First Phone - Portfolio View -->
+                <img src="Group_1547769260__1_-removebg-preview.png" alt="Portfolio Screen" style="max-width: 100%; height: 30%; border-radius: 24px;">
+                <img src="Group_1547769260__1_-removebg-preview.png"  alt="Portfolio Screen" style="max-width: 100%; margin-top:20px; height: auto; border-radius: 24px;">
+
+
+        </section>
+
+        <section class="content-section">
+            <h1 class="hero-title">The future of money is here</h1>
+            <p class="hero-subtitle">We're the most trusted place for people and businesses to buy, sell, and manage crypto.</p>
+            <form class="signup-form">
+                <input type="email" class="email-input" placeholder="satoshi@nakamoto.com" value="satoshi@nakamoto.com">
+                <button type="submit" class="signup-btn">Sign up</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Cookie Banner -->
+    <!-- <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-content"> -->
+            <!-- <div class="cookie-text">
+                We use cookies and similar technologies on our websites to enhance and tailor your experience, analyze our traffic, and for security and marketing. You can choose not to allow some type of cookies by clicking <a href="#">Manage Settings</a>. For more information see our <a href="#">Cookie Policy</a>.
+            </div>
+            <div class="cookie-buttons">
+                <button class="cookie-btn cookie-close" onclick="closeCookieBanner()">Close</button>
+                <button class="cookie-btn cookie-accept" onclick="closeCookieBanner()">Accept all</button>
+            </div> -->
+        <!-- </div>
+    </div> -->
+
+    <!-- <script>
+        function closeCookieBanner() {
+            document.getElementById('cookieBanner').style.display = 'none';
+        }
+
+        // Add some interactive animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate phone mockups on scroll
+            const phones = document.querySelectorAll('.phone-mockup');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.transform = 'translateY(0) scale(1)';
+                        entry.target.style.opacity = '1';
+                    }
+                });
+            });
+
+            phones.forEach(phone => {
+                phone.style.transform = 'translateY(50px) scale(0.95)';
+                phone.style.opacity = '0';
+                phone.style.transition = 'all 0.8s ease-out';
+                observer.observe(phone);
+            });
+
+            // Animate portfolio values
+            const portfolioValue = document.querySelector('.portfolio-value');
+            const balanceAmount = document.querySelector('.balance-amount');
+            
+            function animateValue(element, start, end, duration) {
+                const startValue = parseFloat(start.replace(/[\$,]/g, ''));
+                const endValue = parseFloat(end.replace(/[\$,]/g, ''));
+                const range = endValue - startValue;
+                const startTime = performance.now();
+                
+                function updateValue(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const current = startValue + (range * progress);
+                    element.textContent = '$' + current.toLocaleString('en-US', {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2
+                    });
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(updateValue);
+                    }
+                }
+                
+                requestAnimationFrame(updateValue);
+            }
+
+            // Trigger animations after a delay
+            setTimeout(() => {
+                if (portfolioValue) {
+                    animateValue(portfolioValue, '$28,535.80', '$30,535.80', 2000);
+                }
+                if (balanceAmount) {
+                    animateValue(balanceAmount, '$9,837.80', '$10,837.80', 2000);
+                }
+            }, 1000);
+        });
+    </script> -->
+</body>
+</html>
